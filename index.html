@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan Jenkins | Author</title>
+    <meta name="description" content="Jonathan Jenkins is the author of The Quiet Advantage and The 5 Laws of Agency. Strategy. Power. Competitive reality.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --bg-subtle: #1a1a1a;
+            --text: #e8e8e8;
+            --text-muted: #999999;
+            --accent: #c9a84c;
+            --accent-dim: #8a7235;
+            --border: #222222;
+            --serif: 'EB Garamond', Georgia, serif;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 2rem;
+        }
+        nav .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        nav .logo {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        nav .links { display: flex; gap: 2rem; }
+        nav .links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav .links a:hover { color: var(--accent); }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+        }
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+        .hero .cta {
+            display: inline-block;
+            padding: 0.85rem 2.2rem;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+        .hero .cta:hover { background: var(--accent-dim); }
+
+        /* SECTIONS */
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        /* BOOKS */
+        #books { background: var(--bg); }
+
+        .book-card {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 5rem;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        .book-cover {
+            width: 100%;
+            aspect-ratio: 2/3;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .book-cover .placeholder {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .book-info h3 {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        .book-info .subtitle {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .book-info p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .badge.filled {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .book-links { margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .book-links a {
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+        .btn-primary:hover { background: var(--accent-dim); }
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ABOUT */
+        #about { background: var(--bg-subtle); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        .about-text p:first-of-type { color: var(--text); font-size: 1.05rem; }
+
+        .about-sidebar {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+        .about-sidebar h4 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .about-sidebar ul { list-style: none; }
+        .about-sidebar li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .about-sidebar li:last-child { border-bottom: none; }
+
+        /* CONTACT */
+        #contact { background: var(--bg); text-align: center; }
+        #contact p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        .contact-email {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .contact-email:hover { text-decoration: underline; }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .book-card { grid-template-columns: 1fr; }
+            .book-cover { max-width: 220px; margin: 0 auto; }
+            .about-grid { grid-template-columns: 1fr; }
+            nav .links { gap: 1rem; }
+            nav .links a { font-size: 0.75rem; }
+        }
+        @media (max-width: 480px) {
+            section { padding: 4rem 1.2rem; }
+            .book-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="inner">
+        <a href="#" class="logo">Jonathan Jenkins</a>
+        <div class="links">
+            <a href="#books">Books</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div>
+        <h1>Strategy. Power.<br><span>Competitive Reality.</span></h1>
+        <p>Jonathan Jenkins writes about how the world actually works. Not how it should work. Not how the textbooks describe it. How it works when the stakes are real and the room is reading you back.</p>
+        <a href="#books" class="cta">See the Books</a>
+    </div>
+</section>
+
+<section id="books">
+    <div class="container">
+        <div class="section-label">Books</div>
+
+        <!-- THE QUIET ADVANTAGE -->
+        <div class="book-card">
+            <div class="book-cover">
+                <!-- REPLACE: Add cover image when available -->
+                <!-- <img src="images/quiet-advantage-cover.jpg" alt="The Quiet Advantage book cover"> -->
+                <div class="placeholder">
+                    <strong style="font-family: var(--serif); font-size: 1.3rem; color: var(--text); display: block; margin-bottom: 0.5rem;">THE QUIET ADVANTAGE</strong>
+                    <em style="color: var(--accent);">Winning Before It Begins</em>
+                    <br><br>
+                    <span>Cover coming soon</span>
+                </div>
+            </div>
+            <div class="book-info">
+                <h3>The Quiet Advantage</h3>
+                <div class="subtitle">Winning Before It Begins</div>
+                <span class="badge filled">Coming 2027</span>
+                <p>A field manual for competitive environments. Fifteen chapters on incentive architecture, positional advantage, narrative control, timing, and converting wins into durable structure. Built on fifteen years of field experience and case studies from Austerlitz to Camp David to NVIDIA.</p>
+                <p>Robert Greene tells you what power looks like from the outside. This book gives you the operating system for building it from the inside.</p>
+            </div>
+        </div>
+
+        <!-- THE 5 LAWS OF AGENCY -->
+        <div class="book-card">
+            <div class="book-cover">
+                <!-- REPLACE: Add your new cover image here -->
+                <!-- <img src="images/5-laws-cover.jpg" alt="The 5 Laws of Agency book cover"> -->
+                <div class="placeholder">
+                    <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--text); display: block; margin-bottom: 0.5rem;">THE 5 LAWS<br>OF AGENCY</strong>
+                    <br>
+                    <span>Replace with cover image</span>
+                </div>
+            </div>
+            <div class="book-info">
+                <h3>The 5 Laws of Agency</h3>
+                <div class="subtitle">Take Control of Your Life and Career</div>
+                <span class="badge">IndieReader Approved</span>
+                <span class="badge">4.6 Stars</span>
+                <p>The framework for building personal agency in competitive environments. Five laws that separate people who control their trajectory from people who react to everyone else's. Direct, practical, and built from fifteen years of watching what actually works.</p>
+                <div class="book-links">
+                    <a href="https://www.amazon.com/dp/B0G4X7Y4G7" class="btn-primary" target="_blank" rel="noopener">Get on Amazon</a>
+                    <!-- Add Goodreads or other links as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-label">About</div>
+                <div class="section-title">Jonathan Jenkins</div>
+                <p>Fifteen years in recruiting and consulting taught me one thing: the people who win consistently aren't smarter. They operate on a different layer of the game.</p>
+                <p>I spent a decade watching smart people lose to less talented operators who understood the architecture of decisions. I started writing to codify the patterns I kept seeing repeated across industries, negotiations, and competitive situations.</p>
+                <p>My first book, The 5 Laws of Agency, earned IndieReader Approved status and a 4.6-star rating. My second, The Quiet Advantage, applies structural thinking to competitive reality at a deeper level.</p>
+                <p>I live in New Hampshire.</p>
+            </div>
+            <div class="about-sidebar">
+                <h4>Background</h4>
+                <ul>
+                    <li>15 years in executive recruiting and consulting</li>
+                    <li>Author of The 5 Laws of Agency (IndieReader Approved)</li>
+                    <li>Based in New Hampshire</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="section-label">Contact</div>
+        <div class="section-title">Get in Touch</div>
+        <p>For media inquiries, speaking engagements, or rights information.</p>
+        <a href="mailto:jonjenkinsbooks@gmail.com" class="contact-email">jonjenkinsbooks@gmail.com</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 Jonathan Jenkins. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
