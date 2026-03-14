@@ -12,14 +12,16 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --bg: #0a0a0a;
-            --bg-card: #111111;
-            --bg-subtle: #1a1a1a;
+            --bg: #0b1829;
+            --bg-card: #0f2035;
+            --bg-subtle: #132842;
+            --bg-hero: linear-gradient(180deg, #071222 0%, #0b1829 60%, #0f2035 100%);
             --text: #e8e8e8;
-            --text-muted: #999999;
+            --text-muted: #8a9ab5;
             --accent: #c9a84c;
-            --accent-dim: #8a7235;
-            --border: #222222;
+            --accent-dim: #a88b3a;
+            --accent-glow: rgba(201, 168, 76, 0.15);
+            --border: #1a3050;
             --serif: 'EB Garamond', Georgia, serif;
             --sans: 'Inter', -apple-system, sans-serif;
         }
@@ -39,8 +41,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(11, 24, 41, 0.95);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 100;
             padding: 0 2rem;
@@ -57,7 +59,7 @@
             font-family: var(--serif);
             font-size: 1.1rem;
             font-weight: 600;
-            color: var(--text);
+            color: var(--accent);
             text-decoration: none;
             letter-spacing: 0.02em;
         }
@@ -81,6 +83,17 @@
             justify-content: center;
             text-align: center;
             padding: 8rem 2rem 4rem;
+            background: var(--bg-hero);
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(transparent, var(--bg));
         }
         .hero h1 {
             font-family: var(--serif);
@@ -108,9 +121,18 @@
             font-size: 0.9rem;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            transition: background 0.2s;
+            transition: all 0.2s;
         }
         .hero .cta:hover { background: var(--accent-dim); }
+
+        /* GOLD LINE DIVIDER */
+        .gold-rule {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto 2rem;
+            opacity: 0.6;
+        }
 
         /* SECTIONS */
         section { padding: 6rem 2rem; }
@@ -144,7 +166,10 @@
             padding: 2.5rem;
             background: var(--bg-card);
             border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: border-color 0.3s;
         }
+        .book-card:hover { border-color: var(--accent); }
 
         .book-cover {
             width: 100%;
@@ -155,6 +180,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
         .book-cover img {
             width: 100%;
@@ -173,6 +199,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
+            color: var(--text);
         }
         .book-info .subtitle {
             font-family: var(--serif);
@@ -228,7 +255,11 @@
         .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
         /* ABOUT */
-        #about { background: var(--bg-subtle); }
+        #about {
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -247,11 +278,13 @@
             padding: 2rem;
             background: var(--bg-card);
             border: 1px solid var(--border);
+            border-radius: 4px;
         }
         .about-sidebar h4 {
             font-family: var(--serif);
             font-size: 1.2rem;
             margin-bottom: 1rem;
+            color: var(--accent);
         }
         .about-sidebar ul { list-style: none; }
         .about-sidebar li {
@@ -325,15 +358,14 @@
 <section id="books">
     <div class="container">
         <div class="section-label">Books</div>
+        <div class="gold-rule"></div>
 
         <!-- THE QUIET ADVANTAGE -->
         <div class="book-card">
             <div class="book-cover">
-                <!-- REPLACE: Add cover image when available -->
-                <!-- <img src="images/quiet-advantage-cover.jpg" alt="The Quiet Advantage book cover"> -->
                 <div class="placeholder">
-                    <strong style="font-family: var(--serif); font-size: 1.3rem; color: var(--text); display: block; margin-bottom: 0.5rem;">THE QUIET ADVANTAGE</strong>
-                    <em style="color: var(--accent);">Winning Before It Begins</em>
+                    <strong style="font-family: var(--serif); font-size: 1.3rem; color: var(--accent); display: block; margin-bottom: 0.5rem;">THE QUIET ADVANTAGE</strong>
+                    <em style="color: var(--text-muted);">Winning Before It Begins</em>
                     <br><br>
                     <span>Cover coming soon</span>
                 </div>
@@ -350,23 +382,16 @@
         <!-- THE 5 LAWS OF AGENCY -->
         <div class="book-card">
             <div class="book-cover">
-                <!-- REPLACE: Add your new cover image here -->
-                <!-- <img src="images/5-laws-cover.jpg" alt="The 5 Laws of Agency book cover"> -->
-                <div class="placeholder">
-                    <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--text); display: block; margin-bottom: 0.5rem;">THE 5 LAWS<br>OF AGENCY</strong>
-                    <br>
-                    <span>Replace with cover image</span>
-                </div>
+                <img src="images/5-laws-cover.png" alt="The 5 Laws of Agency book cover">
             </div>
             <div class="book-info">
                 <h3>The 5 Laws of Agency</h3>
-                <div class="subtitle">Take Control of Your Life and Career</div>
+                <div class="subtitle">How to Stay in Control When the World Falls Apart</div>
                 <span class="badge">IndieReader Approved</span>
                 <span class="badge">4.6 Stars</span>
                 <p>The framework for building personal agency in competitive environments. Five laws that separate people who control their trajectory from people who react to everyone else's. Direct, practical, and built from fifteen years of watching what actually works.</p>
                 <div class="book-links">
                     <a href="https://www.amazon.com/dp/B0G4X7Y4G7" class="btn-primary" target="_blank" rel="noopener">Get on Amazon</a>
-                    <!-- Add Goodreads or other links as needed -->
                 </div>
             </div>
         </div>
